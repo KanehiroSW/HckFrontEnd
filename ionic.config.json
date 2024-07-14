@@ -1,0 +1,12 @@
+{
+  "name": "AppKiosco",
+  "integrations": {
+    "capacitor": {},
+    "proxy": {
+      "proxyUrl": "http://localhost:8080",
+      "proxyNoAgent": true,
+      "rejectUnauthorized": false
+    }
+  },
+  "type": "angular"
+}
