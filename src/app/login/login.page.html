@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item class="itlog" lines="none">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label class="lbltit"
+              >Bienvenido a OsteoVision
+              <img class="imgicon" src="/assets/icon/Icon.png" alt="Icon" />
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input class="inpuser" label="Usuario" labelPlacement="stacked">
+              <ion-icon
+                slot="start"
+                name="person-circle-outline"
+                aria-hidden="true"
+              ></ion-icon>
+            </ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input
+              class="inppas"
+              label="Contraseña"
+              type="password"
+              labelPlacement="stacked"
+            >
+              <ion-icon slot="start" name="key" aria-hidden="true"></ion-icon>
+            </ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="btncont">
+          <ion-col>
+            <ion-button class="btnlog" color="green" routerLink="/home">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="btncont">
+          <ion-col>
+            <ion-label class="lblreg">¿No estas registrado?</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="btncont">
+          <ion-col>
+            <ion-button class="btnret" color="green" routerLink="/register"
+              >Registrar</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

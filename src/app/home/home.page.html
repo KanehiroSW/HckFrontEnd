@@ -1,13 +1,78 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="content-wrapper ion-no-padding">
+  <ion-list class="ion-no-padding">
+    <ion-item class="iithead ion-no-padding">
+      <img
+        src="/assets/headHome.jpg"
+        alt="headHome"
+        class="imghead ion-no-padding"
+      />
+    </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="content-center">
+      <ion-item class="iitclas">
+        <ion-thumbnail slot="start">
+          <img
+            class="imgicon ion-no-padidng"
+            alt="OsteoVision"
+            src="/assets/icon/Icon.png"
+          />
+        </ion-thumbnail>
+        <ion-label class="lblinfo"
+          >OsteoVision es una aplicación para la predicción de diagnósticos
+          presuntivos sobre radiografías para la identificación de la
+          Osteoporosis usando la IA.</ion-label
+        >
+      </ion-item>
+    </div>
+    <ion-item class="iitmenu ion-no-padding" lines="none">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col
+            ><ion-button class="btnopcl" color="rgb(0, 128, 128)">
+              <ion-label class="lblopcl">NUEVO DIAGNÓSTICO</ion-label>
+              <img
+                class="imgopcl"
+                src="/assets/btndiag.png"
+                alt="opcl"
+              /> </ion-button
+          ></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col
+            ><ion-button class="btnopcr" color="rgb(0, 128, 128)">
+              <img
+                class="imgopcl"
+                src="/assets/btndiag.png"
+                alt="opcr"
+              /> 
+              <ion-label class="lblopcr">HISTORIAL DE DIAGNÓSTICO</ion-label>
+              </ion-button
+          ></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col
+            ><ion-button class="btnopcl" color="rgb(0, 128, 128)">
+              <ion-label class="lblopcl">ENCONTRAR</ion-label>
+              <img
+                class="imgopcl"
+                src="/assets/btndiag.png"
+                alt="opcl"
+              /> </ion-button
+          ></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col
+            ><ion-button class="btnopcr" color="rgb(0, 128, 128)">
+              <img
+                class="imgopcl"
+                src="/assets/btndiag.png"
+                alt="opcr"
+              /> 
+              <ion-label class="lblopcr">PERFIL</ion-label>
+              </ion-button
+          ></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
