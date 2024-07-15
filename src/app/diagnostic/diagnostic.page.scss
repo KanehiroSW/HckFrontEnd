@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+ion-toolbar {
+  --background: transparent;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+ion-header {
+  background-color: rgb(0, 128, 128);
+}
+
+.btnenv {
+  color: white;
+  background-color: green;
+  box-shadow: none;
+}
+
+.btndes {
+  color: white;
+  background-color: red;
+  box-shadow: none;
+}
+
+.btndes,
+.btnenv {
+  font-family: "Poppins", sans-serif;
+  width: 140px;
+  text-transform: none;
+  font-size: 15px;
+}
+
+.btnsop {
+  margin: auto;
+}
+
+.iicic {
+  margin-left: 5px;
+}
+
+.divimg {
+  background: rgba(0, 128, 128, 0.111);
+  width: 100%;
+  height: 210px;
+}
+
+.divrep {
+  border: 1px solid black;
+}
+
+.iitimg {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.btnupl,
+.btndia {
+  color: white;
+  --box-shadow: none;
+  font-family: "Poppins", sans-serif;
+  width: 140px;
+  text-transform: none;
+  font-size: 15px;
+}
+
+.btnupl {
+  background: rgb(0, 128, 128);
+}
+
+.btndia {
+  background: orange;
+}
+
+.iittit {
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+
+.iitenf {
+  text-align: center;
+}
+
+.iitinf {
+  font-family: "Poppins", sans-serif;
+}
+
+.ialale {
+  font-family: "Poppins", sans-serif;
+}
+
+.imgdex{
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    margin-top: 4%;
+}

@@ -1,13 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>history</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Historial de Diágnóstico</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">history</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item class="iitcont" lines="none">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1 class="h1tit">Osteoporsis Primaria Tipo 1</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label class="lblfec">Fecha de Diágnóstico:</ion-label>
+            <ion-label class="lbldat">21/05/2024</ion-label>
+            <ion-button class="btndet" color="blue" routerLink="/detail"> Ver Detalle </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>

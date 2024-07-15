@@ -1,36 +1,17 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button routerLink="/home"></ion-back-button>
+      <ion-back-button routerLink="/history"></ion-back-button>
     </ion-buttons>
-    <ion-title>Nuevo Diagnóstico</ion-title>
+    <ion-title> Detalle de Historial</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list class="ion-padding">
-    <ion-item>
-      <ion-buttons>
-        <ion-button class="btnupl" (click)="abrirGaleria()">
-          Subir Imagen
-        </ion-button>
-        <ion-button class="btndia" id="present-alert">
-          Diagnosticar
-        </ion-button>
-      </ion-buttons>
-      <ion-alert
-        class="ialale"
-        trigger="present-alert"
-        header="Precaución"
-        message="Nuestra IA hace un diagnóstico presuntivo más no un final, le recomendamos buscar un médico para un diagnóstico final"
-        [buttons]="alertButtons"
-      ></ion-alert>
-    </ion-item>
     <div class="divrep">
-      <ion-item class="iitimg">
-        <div class="divimg">
-          <img class="imgdex" *ngIf="imagenSeleccionada" [src]="imagenSeleccionada" alt="rayX" />
-        </div>
+      <ion-item class="iitdex">
+        <img class="imgdex" src="/assets/detxra.jpg" alt="rayoX" />
       </ion-item>
       <ion-item>
         <ion-label class="iittit iitenf">Osteoporsis Primaria Tipo 1</ion-label>
@@ -49,7 +30,7 @@
         <ion-label class="iittit">Recomendaciones:</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label class="iitinf">Texto de recomendaciones</ion-label>
+        <ion-label class="iitinf">texto de recomendaciones</ion-label>
       </ion-item>
       <ion-item>
         <ion-buttons class="btnsop">
