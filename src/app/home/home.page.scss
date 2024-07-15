@@ -134,7 +134,7 @@ ion-thumbnail {
   margin-left: 0px;
 }
 
-ion-fab-button {
+.ifacon {
   --background: red;
   --border-radius: 50%;
   --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -143,6 +143,12 @@ ion-fab-button {
   margin-left: 10px;
 }
 
+.ifades{
+  margin-bottom: 8px;
+  margin-left: 15px;
+}
+
 ion-list{
   height: 100%;
 }
+

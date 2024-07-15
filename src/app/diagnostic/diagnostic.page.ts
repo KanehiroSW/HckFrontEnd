@@ -13,6 +13,7 @@ export class DiagnosticPage implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
   async abrirGaleria() {
     try {
       const image = await Camera.getPhoto({

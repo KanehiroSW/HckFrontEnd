@@ -14,6 +14,13 @@ export class HomePage implements OnInit {
 
   ngOnInit() {}
 
+  abrirWhatsApp() {
+    const phoneNumber = '+51984773566';
+    const message = 'Hola, ¿me puedes ayudar?';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
+
   async cerrarSesion() {
     const actionSheet = await this.actionSheetController.create({
       header: '¿Estás seguro?',

@@ -11,20 +11,13 @@ ion-header {
   background-color: rgb(0, 128, 128);
 }
 
-.btnenv {
-  color: white;
-  background-color: green;
-  box-shadow: none;
-}
-
 .btndes {
   color: white;
   background-color: red;
   box-shadow: none;
 }
 
-.btndes,
-.btnenv {
+.btndes{
   font-family: "Poppins", sans-serif;
   width: 140px;
   text-transform: none;
