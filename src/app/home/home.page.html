@@ -6,6 +6,11 @@
         alt="headHome"
         class="imghead ion-no-padding"
       />
+      <img
+        src="/assets/loghome.png"
+        alt="headHome"
+        class="head ion-no-padding"
+      />
     </ion-item>
 
     <div class="content-center">
@@ -28,7 +33,7 @@
       <ion-grid class="ion-no-padding">
         <ion-row>
           <ion-col
-            ><ion-button class="btnopcl" color="rgb(0, 128, 128)">
+            ><ion-button class="btnopcl" color="rgb(0, 128, 128)" routerLink="/diagnostic">
               <ion-label class="lblopcl">NUEVO DIAGNÓSTICO</ion-label>
               <img
                 class="imgopcl"
@@ -39,40 +44,45 @@
         </ion-row>
         <ion-row>
           <ion-col
-            ><ion-button class="btnopcr" color="rgb(0, 128, 128)">
+            ><ion-button class="btnopcr" color="rgb(0, 128, 128)" routerLink="/history">
               <img
-                class="imgopcl"
-                src="/assets/btndiag.png"
+                class="imgopcr imgdiag"
+                src="/assets/btnhist.png"
                 alt="opcr"
-              /> 
+              />
               <ion-label class="lblopcr">HISTORIAL DE DIAGNÓSTICO</ion-label>
-              </ion-button
-          ></ion-col>
+            </ion-button></ion-col
+          >
         </ion-row>
         <ion-row>
           <ion-col
-            ><ion-button class="btnopcl" color="rgb(0, 128, 128)">
-              <ion-label class="lblopcl">ENCONTRAR</ion-label>
+            ><ion-button class="btnopcl" color="rgb(0, 128, 128)" routerLink="/location">
+              <ion-label class="lblopcl lblenc">ENCONTRAR</ion-label>
               <img
-                class="imgopcl"
-                src="/assets/btndiag.png"
+                class="imgopcl imgloc"
+                src="/assets/btnloc.png"
                 alt="opcl"
               /> </ion-button
           ></ion-col>
         </ion-row>
         <ion-row>
           <ion-col
-            ><ion-button class="btnopcr" color="rgb(0, 128, 128)">
+            ><ion-button class="btnopcr" color="rgb(0, 128, 128)" routerLink="/profile">
               <img
-                class="imgopcl"
-                src="/assets/btndiag.png"
+                class="imgopcr imgpro"
+                src="/assets/btnprof.png"
                 alt="opcr"
-              /> 
+              />
               <ion-label class="lblopcr">PERFIL</ion-label>
-              </ion-button
-          ></ion-col>
+            </ion-button></ion-col
+          >
         </ion-row>
       </ion-grid>
     </ion-item>
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
