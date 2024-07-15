@@ -10,6 +10,8 @@ import { Camera } from '@capacitor/camera';
 export class DiagnosticPage implements OnInit {
   alertButtons = ['Ok'];
   imagenSeleccionada: string = '';
+  botonesDesactivados: boolean = true;
+
   constructor() {}
 
   ngOnInit() {}
@@ -23,6 +25,10 @@ export class DiagnosticPage implements OnInit {
       });
 
       this.imagenSeleccionada = image.webPath ?? '';
+
+      if (this.imagenSeleccionada) {
+        this.botonesDesactivados = false;
+      }
 
       console.log('Imagen seleccionada:', this.imagenSeleccionada);
     } catch (error) {

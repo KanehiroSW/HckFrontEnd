@@ -14,7 +14,7 @@
         <ion-button class="btnupl" (click)="abrirGaleria()">
           Subir Imagen
         </ion-button>
-        <ion-button class="btndia" id="present-alert">
+        <ion-button class="btndia" id="present-alert" [disabled]="botonesDesactivados">
           Diagnosticar
         </ion-button>
       </ion-buttons>
@@ -26,14 +26,14 @@
         [buttons]="alertButtons"
       ></ion-alert>
     </ion-item>
-    <div class="divrep">
+    <div id="pdf-content" class="divrep">
       <ion-item class="iitimg">
         <div class="divimg">
           <img class="imgdex" *ngIf="imagenSeleccionada" [src]="imagenSeleccionada" alt="rayX" />
         </div>
       </ion-item>
       <ion-item>
-        <ion-label class="iittit iitenf">Osteoporsis Primaria Tipo 1</ion-label>
+        <ion-label class="iittit iitenf">Texto de la enfermedad</ion-label>
       </ion-item>
       <ion-item>
         <ion-label class="iittit">Prescición (%):</ion-label>
@@ -53,8 +53,11 @@
       </ion-item>
       <ion-item>
         <ion-buttons class="btnsop">
-          <ion-button class="btndes">
+          <ion-button class="btndes" [disabled]="botonesDesactivados">
             Descargar<ion-icon class="iicic" name="reader"></ion-icon>
+          </ion-button>
+          <ion-button class="btncon" [disabled]="botonesDesactivados">
+            Conservar<ion-icon name="archive"></ion-icon>
           </ion-button>
         </ion-buttons>
       </ion-item>
