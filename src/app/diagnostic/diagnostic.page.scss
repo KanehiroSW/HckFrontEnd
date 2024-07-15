@@ -11,6 +11,10 @@ ion-header {
   background-color: rgb(0, 128, 128);
 }
 
+.btnscon {
+  margin: auto;
+}
+
 .btndes {
   color: white;
   background-color: red;
@@ -23,7 +27,8 @@ ion-header {
   box-shadow: none;
 }
 
-.btndes, .btncon{
+.btndes,
+.btncon {
   font-family: "Poppins", sans-serif;
   width: 140px;
   text-transform: none;
@@ -89,9 +94,9 @@ ion-header {
   font-family: "Poppins", sans-serif;
 }
 
-.imgdex{
-    width: 90%;
-    height: 90%;
-    margin: auto;
-    margin-top: 4%;
+.imgdex {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  margin-top: 4%;
 }

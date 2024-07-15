@@ -9,27 +9,54 @@
 
 <ion-content [fullscreen]="true">
   <ion-list class="ion-padding">
-    <ion-item>
-      <ion-buttons>
+    <ion-item lines="none">
+      <ion-buttons class="btnscon">
         <ion-button class="btnupl" (click)="abrirGaleria()">
           Subir Imagen
         </ion-button>
-        <ion-button class="btndia" id="present-alert" [disabled]="botonesDesactivados">
-          Diagnosticar
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-buttons>
+        <ion-button
+          class="btndia"
+          id="present-alertR"
+          [disabled]="botonesDesactivados"
+        >
+          Radiografía
+        </ion-button>
+        <ion-button
+          class="btndia"
+          id="present-alertT"
+          [disabled]="botonesDesactivados"
+        >
+          Tomografía
         </ion-button>
       </ion-buttons>
       <ion-alert
         class="ialale"
-        trigger="present-alert"
+        trigger="present-alertR"
         header="Precaución"
-        message="Nuestra IA hace un diagnóstico presuntivo más no un final, le recomendamos buscar un médico para un diagnóstico final"
+        message="OsteoVision hace un diagnóstico presuntivo más no un final, le recomendamos buscar un médico para un diagnóstico final"
+        [buttons]="alertButtons"
+      ></ion-alert>
+      <ion-alert
+        class="ialale"
+        trigger="present-alertT"
+        header="Precaución"
+        message="OsteoVision hace un diagnóstico presuntivo más no un final, le recomendamos buscar un médico para un diagnóstico final"
         [buttons]="alertButtons"
       ></ion-alert>
     </ion-item>
     <div id="pdf-content" class="divrep">
       <ion-item class="iitimg">
         <div class="divimg">
-          <img class="imgdex" *ngIf="imagenSeleccionada" [src]="imagenSeleccionada" alt="rayX" />
+          <img
+            class="imgdex"
+            *ngIf="imagenSeleccionada"
+            [src]="imagenSeleccionada"
+            alt="rayX"
+          />
         </div>
       </ion-item>
       <ion-item>
