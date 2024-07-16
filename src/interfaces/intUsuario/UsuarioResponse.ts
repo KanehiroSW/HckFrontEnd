@@ -10,7 +10,7 @@ export interface UsuarioResponse {
     nombre:    string;
     password:  string;
     peso?:      number;
-    rol:       string;
+    rol:       number;
     sexo?:      string;
     telefono:  string;
     usuario:   string;
