@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { AuthService } from '../services/Auth.service';  // Asegúrate de importar el servicio de autenticación
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -9,7 +11,8 @@ import { ActionSheetController } from '@ionic/angular';
 export class HomePage implements OnInit {
   constructor(
     private router: Router,
-    private actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private authService: AuthService  // Inyecta el servicio de autenticación
   ) {}
 
   ngOnInit() {}
@@ -29,7 +32,8 @@ export class HomePage implements OnInit {
           text: 'Sí',
           role: 'destructive',
           handler: () => {
-            this.router.navigate(['/']);
+            this.authService.logout();  // Llama al método de cierre de sesión del servicio de autenticación
+            this.router.navigate(['/login']);  // Redirige al usuario a la página de inicio de sesión
           },
         },
         {
