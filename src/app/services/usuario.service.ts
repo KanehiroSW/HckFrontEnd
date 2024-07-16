@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LoginResponse } from 'src/interfaces/LoginResponse';
-import { UsuarioLogin } from 'src/interfaces/UsuarioLogin';
-import { UsuarioResponse } from 'src/interfaces/UsuarioResponse';
+import { LoginResponse } from 'src/interfaces/intUsuario/LoginResponse';
+import { UsuarioLogin } from 'src/interfaces/intUsuario/UsuarioLogin';
+import { UsuarioResponse } from 'src/interfaces/intUsuario/UsuarioResponse';
 
 
 @Injectable({

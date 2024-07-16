@@ -6,7 +6,7 @@ export interface UsuarioResponse {
     edad:      number;
     email:     string;
     fecha_nac?: string;
-    idUsuario: number;
+    idUsuario?: number;
     nombre:    string;
     password:  string;
     peso?:      number;
