@@ -24,8 +24,13 @@ export class DetalleDiagService {
   }
 
   postDetalle(nDet: DetPostRequest): Observable<DetPostResponse>{
+    const formData: FormData = new FormData();
+    formData.append('imagen',nDet.imagen);
+    formData.append('descripcion',nDet.descripcion);
+    formData.append('recomend',nDet.recomend);
+
     return this.http.post<DetPostResponse>
-    ('http://127.0.0.1:5000/detalle_diag',nDet)
+    ('http://127.0.0.1:5000/detalle_diag',formData);
   }
 
 }
