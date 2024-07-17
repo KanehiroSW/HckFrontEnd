@@ -5,6 +5,7 @@ export interface DetPostResponse{
 
 export interface DetalleDiag {
     descripcion:     string;
+    idDetalle:       number;
     imagen:          string;
     precision:       number;
     recomend:        string;
