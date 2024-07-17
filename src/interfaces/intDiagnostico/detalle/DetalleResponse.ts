@@ -5,4 +5,5 @@ export interface DetalleResponse{
     precision:       number;
     recomend:        string;
     tipo_enfermedad: string;
+    fecha_creacion:  string;
 }

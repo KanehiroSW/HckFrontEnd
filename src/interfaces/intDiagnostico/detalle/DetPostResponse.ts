@@ -10,4 +10,5 @@ export interface DetalleDiag {
     precision:       number;
     recomend:        string;
     tipo_enfermedad: string;
+    fecha_creacion:  string;
 }

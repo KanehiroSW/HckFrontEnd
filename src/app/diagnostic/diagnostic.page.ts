@@ -32,7 +32,8 @@ export class DiagnosticPage implements OnInit {
     detalle_diag: {
         descripcion: '',   idDetalle: 0,
         imagen: '',        precision: 0,
-        recomend: '',      tipo_enfermedad: ''
+        recomend: '',      tipo_enfermedad: '',
+        fecha_creacion:''
     }, message: ''
   }
 
