@@ -80,10 +80,16 @@
       </ion-item>
       <ion-item>
         <ion-buttons class="btnsop">
-          <ion-button class="btndes" [disabled]="botonesDesactivados">
+          <ion-button 
+            class="btndes" 
+            [disabled]="botonesDesactivados"
+            (click)="descargar()">
             Descargar<ion-icon class="iicic" name="reader"></ion-icon>
           </ion-button>
-          <ion-button class="btncon" [disabled]="botonesDesactivados">
+          <ion-button 
+            class="btncon" 
+            [disabled]="botonesDesactivados"
+            (click)="conservar()">
             Conservar<ion-icon name="archive"></ion-icon>
           </ion-button>
         </ion-buttons>

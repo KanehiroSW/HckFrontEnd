@@ -66,21 +66,25 @@ export class DiagnosticPage implements OnInit {
 
       if (this.imagenSeleccionada) {
         this.botonesDesactivados = false;
-        //Obtención de archivo imagen
-        this.imageFile = await this.convertirURIaFile(this.imagenSeleccionada);
-        //Estructura JSON para nuevo detalle
-        var postDet = {
-          descripcion: 'test',
-          recomend:    'test',
-          imagen:      this.imageFile
-        }
-        //Recibimiento de respuesta de servicio POST
-        const newDet = await firstValueFrom(this.detSvc.postDetalle(postDet))
-        this.DetRespuesta = {...newDet};
+        this.procesarImagen(this.imagenSeleccionada,2);
+      }
 
-        //Obtención de usuario logueado
-        const user = await firstValueFrom(this.usSvc.getAuthenticatedUsuario());
-        this.Usuario = { ...user }; 
+      // console.log('Imagen seleccionada: ', this.imagenSeleccionada);
+      // console.log('Archivo de imagen: ', this.imageFile);
+    } catch (error) {
+      console.error('Error al abrir la galería:', error);
+    }
+  }
+
+  async conservar(){
+    try {
+      if(this.imagenSeleccionada){
+        this.procesarImagen(this.imagenSeleccionada,1);
+        // console.log(this.DetRespuesta);
+      }
+
+      const user = await firstValueFrom(this.usSvc.getAuthenticatedUsuario());
+      this.Usuario = { ...user }; 
 
         // //Estructura JSON para diagnostico
         var postDiag = {
@@ -92,19 +96,38 @@ export class DiagnosticPage implements OnInit {
         this.diagSvc.postDiagnostico(postDiag)
         .subscribe(resp => console.log(resp));
 
-        //Actualización de campos de vista
-        let pre = parseFloat((this.DetRespuesta.detalle_diag.precision * 100).toFixed(2));
-        this.presicion = pre.toString();
-        this.descripcion = this.DetRespuesta.detalle_diag.descripcion;
-        this.recomend = this.DetRespuesta.detalle_diag.recomend;
-        this.diagnos = this.DetRespuesta.detalle_diag.tipo_enfermedad;
-      }
-
-      // console.log('Imagen seleccionada: ', this.imagenSeleccionada);
-      // console.log('Archivo de imagen: ', this.imageFile);
     } catch (error) {
-      console.error('Error al abrir la galería:', error);
+      console.log('Error al guardar el diagnóstico');
     }
+  }
+
+  descargar(){
+    //Aca va la logica para el pdf
+  }
+  
+  async procesarImagen(imagePath: string, opc: number){
+      try {
+        this.imageFile = await this.convertirURIaFile(imagePath);
+
+          var postDet = {
+            descripcion: 'test',
+            recomend:    'test',
+            imagen:      this.imageFile
+          }
+
+          if(opc === 1){
+            const newDet = await firstValueFrom(this.detSvc.postDetalle(postDet))
+            console.log(newDet);
+            this.DetRespuesta = {...newDet};
+            console.log(this.DetRespuesta);
+          }else if(opc === 2){
+            const newDet = await firstValueFrom(this.detSvc.createDetalle(postDet))
+            this.DetRespuesta = {...newDet};
+          }
+          this.actualizarVista();
+      } catch (error) {
+          console.error('Error al procesar la imagen y detalle:', error);
+      }
   }
 
   async convertirURIaFile(uri: string): Promise<File> {
@@ -113,4 +136,22 @@ export class DiagnosticPage implements OnInit {
     const fileName = uri.substring(uri.lastIndexOf('/') + 1);
     return new File([blob], fileName, { type: blob.type });
   }
+
+  
+
+  actualizarVista(){
+    try {
+      let pre = parseFloat((this.DetRespuesta.detalle_diag.precision * 100).toFixed(2));
+      this.presicion = pre.toString();
+      this.descripcion = this.DetRespuesta.detalle_diag.descripcion;
+      this.recomend = this.DetRespuesta.detalle_diag.recomend;
+      this.diagnos = this.DetRespuesta.detalle_diag.tipo_enfermedad;
+    } catch (error) {
+        console.error('Error al actualizar los campos de vista:', error);
+    }
+  }
+
+
+
+
 }

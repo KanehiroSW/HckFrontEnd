@@ -23,6 +23,16 @@ export class DetalleDiagService {
     (`http://127.0.0.1:5000/detalle_diag/${id}`)
   }
 
+  createDetalle(nDet: DetPostRequest): Observable<DetPostResponse>{
+    const formData: FormData = new FormData();
+    formData.append('imagen',nDet.imagen);
+    formData.append('descripcion',nDet.descripcion);
+    formData.append('recomend',nDet.recomend);
+
+    return this.http.post<DetPostResponse>
+    ('http://127.0.0.1:5000/nuevo_det_diag',formData);
+  }
+
   postDetalle(nDet: DetPostRequest): Observable<DetPostResponse>{
     const formData: FormData = new FormData();
     formData.append('imagen',nDet.imagen);
@@ -30,7 +40,7 @@ export class DetalleDiagService {
     formData.append('recomend',nDet.recomend);
 
     return this.http.post<DetPostResponse>
-    ('http://127.0.0.1:5000/detalle_diag',formData);
+    ('http://127.0.0.1:5000/guardar_det_diag',formData);
   }
 
 }
