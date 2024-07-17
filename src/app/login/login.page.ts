@@ -51,10 +51,9 @@ export class LoginPage implements OnInit {
 
     this.userSvc.loginUsuario(usuario).pipe(
       tap(async resp => {
-        if (resp.message === "Inicio de sesión exitoso" && resp.usuario) {
-          // Assuming you store user details as token
-          const userToken = JSON.stringify(resp.usuario);
-          this.authService.login(userToken);
+        console.log(resp); // Log response for debugging
+        if (resp.message === "Inicio de sesión exitoso" && resp.access_token) {
+          this.authService.login(resp.access_token); // Almacenar el token
           const toast = await this.toastCtrl.create({
             message: 'Inicio de sesión exitoso',
             duration: 1500,
