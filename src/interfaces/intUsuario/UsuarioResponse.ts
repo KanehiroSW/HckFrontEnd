@@ -8,7 +8,6 @@ export interface UsuarioResponse {
     fecha_nac?: string;
     idUsuario?: number;
     nombre:    string;
-    password:  string;
     peso?:      number;
     rol:       number;
     sexo?:      string;

@@ -1,5 +1,5 @@
 export interface DiagnosticoResponse{
-    idDetalle: number,
+    idDetalle?: number,
     idDiagno?: number,
-    idUsuario: number
+    idUsuario?: number
 }

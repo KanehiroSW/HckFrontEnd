@@ -21,7 +21,7 @@ export class DiagnosticoService {
     (`http://127.0.0.1:5000/diagnostico/${id}`)
   }
 
-  postUsuario(nDiag: DiagnosticoResponse): Observable<string>{
+  postDiagnostico(nDiag: DiagnosticoResponse): Observable<string>{
     return this.http.post<{messsage: string}>
     ('http://127.0.0.1:5000/diagnostico',nDiag)
     .pipe(map(response => response.messsage));
