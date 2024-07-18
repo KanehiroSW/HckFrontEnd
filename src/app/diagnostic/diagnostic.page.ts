@@ -6,6 +6,7 @@ import { firstValueFrom } from 'rxjs';
 import { DiagnosticoService } from '../services/diagnostico.service';
 import { UsuarioResponse } from 'src/interfaces/intUsuario/UsuarioResponse';
 import { UsuarioService } from '../services/usuario.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-diagnostic',
@@ -48,6 +49,7 @@ export class DiagnosticPage implements OnInit {
   };
 
   constructor(
+    public alertCrl: AlertController,
     private detSvc: DetalleDiagService,
     private diagSvc: DiagnosticoService,
     private usSvc: UsuarioService
@@ -93,6 +95,8 @@ export class DiagnosticPage implements OnInit {
       //Union de detalle a diagnostico
       this.diagSvc.postDiagnostico(postDiag)
         .subscribe(resp => console.log(resp));
+
+      this.mostrarAlerta();
 
     } catch (error) {
       console.log('Error al guardar el diagnóstico:', error);
@@ -148,5 +152,15 @@ export class DiagnosticPage implements OnInit {
     } catch (error) {
       console.error('Error al actualizar los campos de vista:', error);
     }
+  }
+
+  async mostrarAlerta(){
+    const alert = await this.alertCrl.create({
+      header: 'Conservación exitosa',
+      message: 'Su diagnostico se ha guardado correctamente',
+      buttons: ['Aceptar']
+    });
+    await alert.present();
+    return;
   }
 }

@@ -9,17 +9,17 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item class="iitcont" lines="none">
+    <ion-item *ngFor="let diagnos of Diagnosticos" class="iitcont" lines="none">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h1 class="h1tit">Osteoporsis Primaria Tipo 1</h1>
+            <h1 class="h1tit">{{diagnos.detalle.tipo_enfermedad}}</h1>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-label class="lblfec">Fecha de Diágnóstico:</ion-label>
-            <ion-label class="lbldat">21/05/2024</ion-label>
+            <ion-label class="lbldat">{{diagnos.detalle.fecha_creacion}}</ion-label>
             <ion-button class="btndet" color="blue" routerLink="/detail"> Ver Detalle </ion-button>
           </ion-col>
         </ion-row>
