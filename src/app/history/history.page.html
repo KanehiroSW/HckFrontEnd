@@ -19,8 +19,8 @@
         <ion-row>
           <ion-col>
             <ion-label class="lblfec">Fecha de Diágnóstico:</ion-label>
-            <ion-label class="lbldat">{{diagnos.detalle.fecha_creacion}}</ion-label>
-            <ion-button class="btndet" color="blue" routerLink="/detail"> Ver Detalle </ion-button>
+            <ion-label class="lbldat">{{formatoFecha(diagnos.detalle.fecha_creacion)}}</ion-label>
+            <ion-button class="btndet" color="blue" (click)="verDetalle(diagnos.detalle.idDetalle)"> Ver Detalle </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

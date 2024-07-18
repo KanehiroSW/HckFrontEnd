@@ -4,6 +4,7 @@ import { DiagUserResponse } from 'src/interfaces/intDiagnostico/DiagUserResponse
 import { firstValueFrom } from 'rxjs';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioResponse } from 'src/interfaces/intUsuario/UsuarioResponse';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-history',
@@ -25,7 +26,8 @@ export class HistoryPage implements OnInit {
 
   constructor(
     private usSvc: UsuarioService,
-    private diagSvc: DiagnosticoService
+    private diagSvc: DiagnosticoService,
+    private navCtrl: NavController
   ) { }
 
   async ngOnInit() {
@@ -37,6 +39,19 @@ export class HistoryPage implements OnInit {
     .subscribe(diags => {
       this.Diagnosticos.push(...diags);
     })
+  }
+
+  async verDetalle(id?: number){
+    localStorage.setItem('idDiagnos',JSON.stringify(id));
+    this.navCtrl.navigateForward('/detail');
+  }
+
+  formatoFecha(fecha: string): string{
+    const date = new Date(fecha);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 
 }

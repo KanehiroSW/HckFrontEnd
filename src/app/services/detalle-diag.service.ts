@@ -18,7 +18,7 @@ export class DetalleDiagService {
     ('http://127.0.0.1:5000/detalle_diag');
   }
 
-  getOneDetalle(id: number): Observable<DetalleResponse>{
+  getOneDetalle(id?: number): Observable<DetalleResponse>{
     return this.http.get<DetalleResponse>
     (`http://127.0.0.1:5000/detalle_diag/${id}`)
   }
