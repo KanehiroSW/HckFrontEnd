@@ -16,6 +16,8 @@ import { AlertController } from '@ionic/angular';
 export class DiagnosticPage implements OnInit {
   //Botones de vista
   alertButtons = ['Ok'];
+  desDesactivado: boolean = true;
+  consDesactivado: boolean = true;
   botonesDesactivados: boolean = true;
   
   //Variables para manejar imagenes
@@ -68,7 +70,7 @@ export class DiagnosticPage implements OnInit {
       this.imagenSeleccionada = image.webPath ?? '';
 
       if (this.imagenSeleccionada) {
-        this.botonesDesactivados = false;
+        this.consDesactivado = false;
         await this.procesarImagen(this.imagenSeleccionada, 2);
       }
     } catch (error) {
@@ -80,6 +82,7 @@ export class DiagnosticPage implements OnInit {
     try {
       if (this.imagenSeleccionada) {
         await this.procesarImagen(this.imagenSeleccionada, 1);
+        this.desDesactivado = false
         // console.log('DetRespuesta después de procesar imagen:', this.DetRespuesta);
       }
 
@@ -97,7 +100,6 @@ export class DiagnosticPage implements OnInit {
         .subscribe(resp => console.log(resp));
 
       this.mostrarAlerta();
-
     } catch (error) {
       console.log('Error al guardar el diagnóstico:', error);
     }
