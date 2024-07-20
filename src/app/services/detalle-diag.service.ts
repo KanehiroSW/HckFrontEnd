@@ -23,6 +23,10 @@ export class DetalleDiagService {
     (`http://127.0.0.1:5000/detalle_diag/${id}`)
   }
 
+  getImagen(fileName: string): string{
+    return `http://127.0.0.1:5000/uploads/${fileName}`;
+  }
+  
   createDetalle(nDet: DetPostRequest): Observable<DetPostResponse>{
     const formData: FormData = new FormData();
     formData.append('imagen',nDet.imagen);

@@ -37,6 +37,7 @@ export class DetailPage implements OnInit {
   descripcion: string = '';
   recomend: string = '';
   diagnos: string = '';
+  imageURL: string = '';
 
   constructor(
     private usSvc: UsuarioService,
@@ -57,6 +58,7 @@ export class DetailPage implements OnInit {
 
       if(detail){
         this.DetRespuesta = {...detail};
+        this.detSvc.getImagen(this.DetRespuesta.imagen)
         this.actualizarVista();
       }
 
@@ -72,6 +74,7 @@ export class DetailPage implements OnInit {
       this.descripcion = this.DetRespuesta.descripcion;
       this.recomend = this.DetRespuesta.recomend;
       this.diagnos = this.DetRespuesta.tipo_enfermedad;
+      this.imageURL = this.detSvc.getImagen(this.DetRespuesta.imagen)
     } catch (error) {
       console.error('Error al actualizar los campos de vista:', error);
     }
