@@ -1,5 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Geolocation } from '@capacitor/geolocation';
+import { Component, OnInit } from '@angular/core';
+import { LocationService } from './location.service';
+import { HospitalService } from './hospital.service';
 import * as L from 'leaflet';
 
 @Component({
@@ -7,72 +8,39 @@ import * as L from 'leaflet';
   templateUrl: './location.page.html',
   styleUrls: ['./location.page.scss'],
 })
-export class LocationPage implements AfterViewInit {
-  map!: L.Map;
-  mapInitialized: boolean = false;
+export class LocationPage implements OnInit {
+  facilities: any[] = [];
+  map!: L.Map; // Usamos el operador de aserción no nula para indicar que será inicializado
 
-  constructor() {}
+  constructor(
+    private locationService: LocationService,
+    private hospitalService: HospitalService
+  ) {}
 
-  ngAfterViewInit() {
-    this.initializeMap();
+  async ngOnInit() {
+    const position = await this.locationService.getCurrentPosition();
+    this.hospitalService.getNearbyFacilities(position.lat, position.lng).subscribe((data: any) => {
+      this.facilities = data.elements;
+      this.addFacilitiesToMap(this.facilities);
+    });
+    this.initializeMap(position.lat, position.lng);
   }
 
-  async initializeMap() {
-    if (this.mapInitialized) {
-      return;
-    }
-
-    const position = await Geolocation.getCurrentPosition();
-
-    this.map = L.map('map').setView(
-      [position.coords.latitude, position.coords.longitude],
-      14
-    );
-
+  initializeMap(lat: number, lng: number) {
+    this.map = L.map('map').setView([lat, lng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
-
-    this.addMarker(
-      position.coords.latitude,
-      position.coords.longitude,
-      'Mi ubicación'
-    );
-
-    this.searchHospitals(position.coords.latitude, position.coords.longitude);
-
-    this.mapInitialized = true;
   }
 
-  addMarker(lat: number, lng: number, title: string) {
-    L.marker([lat, lng]).addTo(this.map).bindPopup(title).openPopup();
+  addFacilitiesToMap(facilities: any[]) {
+    facilities.forEach(facility => {
+      const marker = L.marker([facility.lat, facility.lon]).addTo(this.map);
+      marker.bindPopup(facility.tags.name || facility.tags.amenity || 'Servicio Médico');
+    });
   }
 
-  searchHospitals(lat: number, lng: number) {
-    const query = `
-      [out:json];
-      node
-        [amenity=hospital]
-        (around:5000, ${lat}, ${lng});
-      out body;
-    `;
-    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
-      query
-    )}`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const hospitals = data.elements;
-        hospitals.forEach((hospital: any) => {
-          this.addMarker(
-            hospital.lat,
-            hospital.lon,
-            hospital.tags.name || 'Hospital'
-          );
-        });
-      })
-      .catch((error) => console.error('Error fetching hospitals:', error));
+  onSearchFacilities() {
+    this.ngOnInit();
   }
 }
