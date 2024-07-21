@@ -3,13 +3,16 @@
     <ion-buttons slot="start">
       <ion-back-button routerLink="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Encontrar Hospitales</ion-title>
+    <ion-title> Historial de Diágnóstico</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button expand="full" (click)="initializeMap()"
-    >Buscar hospitales cerca de mi</ion-button
-  >
-  <div id="map" style="height: 100%; width: 100%"></div>
+<ion-content>
+  <ion-button expand="full" (click)="onSearchFacilities()">Buscar cerca de mí</ion-button>
+  <div id="map" style="height: 400px;"></div>
+  <ion-list>
+    <ion-item *ngFor="let facility of facilities" class="facility-item">
+      {{ facility.tags.name || facility.tags.amenity || 'Servicio Médico' }}
+    </ion-item>
+  </ion-list>
 </ion-content>
