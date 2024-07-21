@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
-import { DetPostResponse } from 'src/interfaces/intDiagnostico/detalle/DetPostResponse';
-import { DetalleDiagService } from '../services/detalle-diag.service';
+
 import { firstValueFrom } from 'rxjs';
-import { DiagnosticoService } from '../services/diagnostico.service';
-import { UsuarioResponse } from 'src/interfaces/intUsuario/UsuarioResponse';
-import { UsuarioService } from '../services/usuario.service';
 import { AlertController } from '@ionic/angular';
+
+import { DetPostResponse } from 'src/interfaces/intDiagnostico/detalle/DetPostResponse';
+import { UsuarioResponse } from 'src/interfaces/intUsuario/UsuarioResponse';
+
+import { DetalleDiagService } from '../services/detalle-diag.service';
+import { DiagnosticoService } from '../services/diagnostico.service';
+import { UsuarioService } from '../services/usuario.service';
+import { PdfServiceService } from '../services/pdf-service.service';
+
+
 
 @Component({
   selector: 'app-diagnostic',
@@ -54,6 +60,7 @@ export class DiagnosticPage implements OnInit {
     public alertCrl: AlertController,
     private detSvc: DetalleDiagService,
     private diagSvc: DiagnosticoService,
+    private pdfSvc: PdfServiceService,
     private usSvc: UsuarioService
   ) {}
 
@@ -105,8 +112,29 @@ export class DiagnosticPage implements OnInit {
     }
   }
 
-  descargar() {
-    //Aca va la logica para el pdf
+  async descargar() {
+    const {} = this.Usuario
+    let pdf = {
+      user_data: {
+        edad: this.Usuario.edad,
+        telefono: this.Usuario.telefono,
+        dni: this.Usuario.dni,
+        direccion: this.Usuario.direccion,
+        peso: this.Usuario.peso,
+        altura: this.Usuario.altura
+      },
+      diagnosis_data: {
+        tipo_enfermedad: this.DetRespuesta.detalle_diag.tipo_enfermedad,
+        descripcion: this.DetRespuesta.detalle_diag.descripcion,
+        precision: this.DetRespuesta.detalle_diag.precision,
+        recomend: this.DetRespuesta.detalle_diag.recomend,
+        imagen: this.DetRespuesta.detalle_diag.imagen
+      }
+    }
+    this.pdfSvc.generarPDF(pdf).subscribe(blob => {
+      this.pdfSvc.descargarPdf(blob,'reporte_diagnostico.pdf');
+    })
+    
   }
 
   async procesarImagen(imagePath: string, opc: number) {
