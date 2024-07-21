@@ -10,7 +10,7 @@ import * as L from 'leaflet';
 })
 export class LocationPage implements OnInit {
   facilities: any[] = [];
-  map!: L.Map; // Usamos el operador de aserción no nula para indicar que será inicializado
+  map!: L.Map; 
 
   constructor(
     private locationService: LocationService,
@@ -27,6 +27,25 @@ export class LocationPage implements OnInit {
   }
 
   initializeMap(lat: number, lng: number) {
+    const iconRetinaUrl = 'assets/leaflet/marker-icon-2x.png';
+    const iconUrl = 'assets/leaflet/marker-icon.png';
+    const shadowUrl = 'assets/leaflet/marker-shadow.png';
+    const iconDefault = L.icon({
+      iconRetinaUrl,
+      iconUrl,
+      shadowUrl,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+    L.Marker.prototype.options.icon = iconDefault;
+
+    if (this.map) {
+      this.map.off();
+      this.map.remove();
+    }
+
     this.map = L.map('map').setView([lat, lng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
